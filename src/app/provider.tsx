@@ -1,3 +1,7 @@
+/**
+ * Provider file for the redux setup, made to work for Next
+ */
+
 "use client";
 
 import { store } from "./store";

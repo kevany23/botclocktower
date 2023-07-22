@@ -2,13 +2,22 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import { Provider } from 'react-redux'
+/*import {
+  useSelector as useReduxSelector,
+  useDispatch as useReduxDispatch,
+  type TypedUseSelectorHook,
+} from 'react-redux'
+const useDispatch = () => useReduxDispatch()
+const useSelector = useReduxSelector;
+*/
 import { useSelector, useDispatch } from 'react-redux';
-import { todoSlice, addTodo } from './redux/todoslice'
-import { addPlayer } from './redux/playerslice'
-import { ReduxProvider } from './provider'
-import { RootState, AppDispatch } from './store'
+import { todoSlice, addTodo } from '../redux/todoslice'
+import { addPlayer } from '../redux/playerslice'
+import { ReduxProvider } from '../provider'
+import { RootState, AppDispatch } from '../store'
+import Head from 'next/head'
 
-export default function Home() {
+export default function About() {
   console.log('load')
   console.log(useDispatch);
   console.log(todoSlice);

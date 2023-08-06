@@ -16,7 +16,11 @@ a {
 }
 
 html, body {
-  background-color: ghostwhite;
+  background-color: slategray;
+}
+
+body {
+  margin-top: 40px;
 }
 
 div {
@@ -32,6 +36,12 @@ button {
   max-width: 200px;
 }
 
-#gameDiv {
+#game-screen {
   background-color: white;
+  min-width: 400px;
+  width: 70%;
+  padding: 20px;
+  margin: 10px;
+  min-height: 600px;
+  justify-content: center;
 }

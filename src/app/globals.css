@@ -30,6 +30,13 @@ div {
   align-items: center;
 }
 
+.row-div {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+}
+
 button {
   background-color: lightcyan;
   border: 1px solid black;
@@ -44,4 +51,10 @@ button {
   margin: 10px;
   min-height: 600px;
   justify-content: center;
+}
+
+.small-inline-button {
+  height: 30px;
+  width: 30px;
+  padding: 0;
 }

@@ -1,0 +1,9 @@
+.name-card {
+  border: 1px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.name-div {
+  height: 40px;
+  margin-right: 20px;
+}

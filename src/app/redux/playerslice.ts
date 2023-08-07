@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const playerSlice = createSlice({
   name: 'todos',
-  initialState: ["bob", "joe"],
+  initialState: [],
   reducers: {
     addPlayer: (state, action) => {
       const todo = {

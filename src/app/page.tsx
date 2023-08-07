@@ -8,7 +8,7 @@ import { addPlayer } from './redux/playerslice'
 import { ReduxProvider } from './provider'
 import { RootState, AppDispatch } from './store'
 import GameCreator from './components/game_creator'
-import {Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 export default function Home() {
   console.log('load')

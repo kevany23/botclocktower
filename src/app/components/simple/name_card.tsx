@@ -1,6 +1,10 @@
-import React, { Component, BaseSyntheticEvent } from 'react';
+import React from 'react';
 import { Container, Row, Button } from 'react-bootstrap';
 import { BsTrashFill } from 'react-icons/bs';
+import { deletePlayer } from '../../redux/playerslice';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { RootState, AppDispatch } from '../store'
 import './name_card.css'
 
 interface NameCardProps {
@@ -8,13 +12,23 @@ interface NameCardProps {
   deletable ?: boolean
 }
 
-export default function NameCard(props: any) {
+export default function NameCard(props: NameCardProps) {
+  const dispatch = useDispatch();
+
+  const deleteNameCard = function(name: string) {
+    dispatch(deletePlayer(name))
+  }
   return (
     <div className="name-card row-div" style={{height: "50px"}}>
       <div className="name-div" style={{height: "40px", marginRight: "20px"}}>
         <p>{props.name}</p>
       </div>
-      <Button className="small-inline-button" variant="danger"><BsTrashFill/></Button>
+      {props.deletable ?
+      <Button className="small-inline-button" variant="danger"
+        onClick={() => {deleteNameCard(props.name)}}>
+        <BsTrashFill/>
+        </Button> : <></>
+    }
     </div>
   )
 }

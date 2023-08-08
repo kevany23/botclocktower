@@ -21,7 +21,7 @@ export default function GameCreator() {
   return (
     <div>
       <div>
-        {players.map((item, idx) => <NameCard name={item}/>)}
+        {players.map((item, idx) => <NameCard key={idx} name={item} deletable={true}/>)}
       </div>
       <form>
         <input placeholder="Enter name" value={playerInput}

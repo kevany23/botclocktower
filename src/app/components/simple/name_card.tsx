@@ -1,10 +1,9 @@
 import React from 'react';
 import { Container, Row, Button } from 'react-bootstrap';
 import { BsTrashFill } from 'react-icons/bs';
-import { deletePlayer } from '../../redux/playerslice';
+import { deletePlayer } from '../../redux/gamecreatorslice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { RootState, AppDispatch } from '../store'
 import './name_card.css'
 
 interface NameCardProps {

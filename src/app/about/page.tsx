@@ -4,7 +4,7 @@ import styles from './page.module.css'
 import { Provider } from 'react-redux'
 import { useSelector, useDispatch } from 'react-redux';
 import { todoSlice, addTodo } from '../redux/todoslice'
-import { addPlayer } from '../redux/playerslice'
+import { addPlayer } from '../redux/gamecreatorslice'
 import { ReduxProvider } from '../provider'
 import { RootState, AppDispatch } from '../store'
 

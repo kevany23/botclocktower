@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import todoReducer from "./redux/todoslice";
-import playerReducer from "./redux/playerslice";
+import gameCreatorReducer from "./redux/gamecreatorslice";
 import gameReducer from "./redux/gameslice";
 
 export const store = configureStore({
   reducer: {
     todo: todoReducer,
-    players: playerReducer,
+    gameCreator: gameCreatorReducer,
     gameState: gameReducer
   }
 });

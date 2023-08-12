@@ -1,98 +1,121 @@
 {
   "townsfolk": [
     {
-      "role": "washerwoman",
-      "description": "You start knowing that 1 of 2 players is a particular Townsfolk."
+      "name": "Washerwoman",
+      "description": "You start knowing that 1 of 2 players is a particular Townsfolk.",
+      "id": 0
     },
     {
-      "role": "librarian",
-      "description": "You start knowing that 1 of 2 players is a particular Outsider. (Or that zero are in play.)" 
+      "name": "Librarian",
+      "description": "You start knowing that 1 of 2 players is a particular Outsider. (Or that zero are in play.)",
+      "id": 1 
     },
     {
-      "role": "investigator",
-      "description": "You start knowing that 1 of 2 players is a particular Minion." 
+      "name": "Investigator",
+      "description": "You start knowing that 1 of 2 players is a particular Minion.",
+      "id": 2
     },
     {
-      "role": "chef",
-      "description": "You start knowing how many pairs of evil players there are."
+      "name": "Chef",
+      "description": "You start knowing how many pairs of evil players there are.",
+      "id": 3
     },
     {
-      "role": "empath",
-      "description": "Each night, you learn how many of your 2 alive neighbours are evil."
+      "name": "Empath",
+      "description": "Each night, you learn how many of your 2 alive neighbours are evil.",
+      "id": 4
     },
     {
-      "role": "fortuneteller",
-      "description": "Each night, choose 2 players: you learn if either is a Demon. There is a good player that registers as a Demon to you."
+      "name": "Fortuneteller",
+      "description": "Each night, choose 2 players: you learn if either is a Demon. There is a good player that registers as a Demon to you.",
+      "id": 5
     },
     {
-      "role": "undertaker",
-      "description": "Each night*, you learn which character died by execution today." 
+      "name": "Undertaker",
+      "description": "Each night*, you learn which character died by execution today.",
+      "id": 6
     },
     {
-      "role": "monk",
-      "description": "Each night*, choose a player (not yourself): they are safe from the Demon tonight."
+      "name": "Monk",
+      "description": "Each night*, choose a player (not yourself): they are safe from the Demon tonight.",
+      "id": 7
     },
     {
-      "role": "slayer",
-      "description": "Once per game, during the day, publicly choose a player: if they are the Demon, they die."
+      "name": "Slayer",
+      "description": "Once per game, during the day, publicly choose a player: if they are the Demon, they die.",
+      "id": 8
     },
     {
-      "role": "soldier",
-      "description": "You are safe from the Demon."
+      "name": "Soldier",
+      "description": "You are safe from the Demon.",
+      "id": 9
     },
     {
-      "role": "ravenkeeper",
-      "description": "If you die at night, you are woken to choose a player: you learn their character."
+      "name": "Ravenkeeper",
+      "description": "If you die at night, you are woken to choose a player: you learn their character.",
+      "id": 10
     },
     {
-      "role": "virgin",
-      "description": "The 1st time you are nominated, if the nominator is a Townsfolk, they are executed immediately."
+      "name": "Virgin",
+      "description": "The 1st time you are nominated, if the nominator is a Townsfolk, they are executed immediately.",
+      "id": 11
     },
     {
-      "role": "mayor",
-      "description": "If only 3 players live & no execution occurs, your team wins. If you die at night, another player might die instead."
+      "name": "Mayor",
+      "description": "If only 3 players live & no execution occurs, your team wins. If you die at night, another player might die instead.",
+      "id": 12
     }
   ],
   "outsiders": [
     {
-      "role": "butler",
-      "description": "Each night, choose a player (not yourself): tomorrow, you may only vote if they are voting too."
+      "name": "Butler",
+      "description": "Each night, choose a player (not yourself): tomorrow, you may only vote if they are voting too.",
+      "id": 13
     },
     {
-      "role": "saint",
-      "description": "If you die by execution, your team loses."
+      "name": "Saint",
+      "description": "If you die by execution, your team loses.",
+      "id": 14
     },
     {
-      "role": "recluse",
-      "description": "You might register as evil & as a Minion or Demon, even if dead."
+      "name": "Recluse",
+      "description": "You might register as evil & as a Minion or Demon, even if dead.",
+      "id": 15
     },
     {
-      "role": "drunk",
-      "description": "You do not know you are the Drunk. You think you are a Townsfolk character, but you are not."
+      "name": "Drunk",
+      "description": "You do not know you are the Drunk. You think you are a Townsfolk character, but you are not.",
+      "id": 16
     }
   ],
   "minions": [
     {
-      "role": "poisoner",
-      "description": "Each night, choose a player: they are poisoned tonight and tomorrow day."
+      "name": "Poisoner",
+      "description": "Each night, choose a player: they are poisoned tonight and tomorrow day.",
+      "id": 17
     },
     {
-      "role": "spy",
-      "description": "Each night, you see the Grimoire. You might register as good & as a Townsfolk or Outsider, even if dead."
+      "name": "Spy",
+      "description": "Each night, you see the Grimoire. You might register as good & as a Townsfolk or Outsider, even if dead.",
+      "id": 18
     },
     {
-      "role": "baron",
-      "description": "There are extra Outsiders in play. [+2 Outsiders]" 
+      "name": "Baron",
+      "description": "There are extra Outsiders in play. [+2 Outsiders]",
+      "id": 19 
     },
     {
-      "role": "scarletwoman",
-      "description": "If there are 5 or more players alive & the Demon dies, you become the Demon. (Travellers don't count)"
+      "name": "Scarletwoman",
+      "description": "If there are 5 or more players alive & the Demon dies, you become the Demon. (Travellers don't count)",
+      "id": 20
     }
   ],
   "demons": [
     {
-      "role": "imp",
-      "description": "Each night*, choose a player: they die. If you kill yourself this way, a Minion becomes the Imp."
+      "name": "Imp",
+      "description": "Each night*, choose a player: they die. If you kill yourself this way, a Minion becomes the Imp.",
+      "id": 21
     }
-  ]
+  ],
+  "total": 22
 }

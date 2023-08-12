@@ -11,9 +11,6 @@ import GameCreator from './components/game_creator'
 import { Container, Row, Col } from 'react-bootstrap';
 
 export default function Home() {
-  console.log('load')
-  console.log(useDispatch);
-  console.log(todoSlice);
   const dispatch = useDispatch();
   const isGameRunning = useSelector((state: RootState) => state.gameState.isGameRunning);
   let screen = <p>Default Screen</p>;

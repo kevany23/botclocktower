@@ -5,8 +5,9 @@ import { useState } from 'react';
 import { addPlayer, changePage, GameCreatorPage } from '../redux/gamecreatorslice';
 import { RootState, AppDispatch } from '../store'
 import NameCard from './simple/name_card';
-import { RoleType } from '../types/index'
+import { RoleType, RoleInfo } from '../types/index'
 import { ClassLineup, getClassLineup } from '../util/botc_math'
+import { booleanFilter } from '../util/util'
 import * as rolesheet from '../../../public/troublebrewing.json'
 import './game_creator.css'
 
@@ -87,11 +88,11 @@ function RoleSelector() {
   };
 
   const handleSubmit = function(evt: BaseSyntheticEvent) {
-    const numTownsfolk = getArrayCount(selectedTownsfolk);
-    const numOutsiders = getArrayCount(selectedOutsiders);
-    const numMinions = getArrayCount(selectedMinions);
-    const numDemons = getArrayCount(selectedDemons);
-    checkRoles(players.length, numTownsfolk, numOutsiders, numMinions, numDemons);
+    const usableTownsfolk = booleanFilter(townsfolk, selectedTownsfolk);
+    const usableOutsiders = booleanFilter(outsiders, selectedOutsiders);
+    const usableMinions = booleanFilter(minions, selectedMinions);
+    const usableDemons = booleanFilter(demons, selectedDemons);
+    createNewGame(players, usableTownsfolk, usableOutsiders, usableMinions, usableDemons);
     evt.preventDefault();
   };
 
@@ -171,34 +172,35 @@ function checkRoles(numPlayers: number, numTownsfolk: number,
   if (numPlayers < 7) {
     // Not enough players
     alert("Not enough players");
-    return;
+    return false;
   }
   if (numPlayers > 16) {
     alert("Too many players");
-    return;
+    return false;
   }
   const lineup = getClassLineup(numPlayers) as ClassLineup;
   // check if number of each category matches
   if (!lineup) {
     alert("Invalid Number of Players");
-    return;
+    return false;
   }
   if (numTownsfolk < lineup.numTownsfolk) {
     alert("Not enough Townsfolk selected");
-    return;
+    return false;
   }
   if (numOutsiders < lineup.numOutsiders) {
     alert("Not enough Outsiders selected");
-    return;
+    return false;
   }
   if (numMinions < lineup.numMinions) {
     alert("Not enough Minions selected");
-    return;
+    return false;
   }
   if (numDemons < lineup.numDemons) {
     alert("Not enough Demons selected");
-    return;
+    return false;
   }
+  return true;
 }
 
 function getArrayCount(array: boolean[]): number {
@@ -213,11 +215,21 @@ function getArrayCount(array: boolean[]): number {
 }
 
 function assignRoles() {
-  
+  // first we get the individual roles from the state
 }
 
-function createNewGame() {
-
+function createNewGame(players: string[],
+  selectedTownsfolk: RoleInfo[],
+  selectedOutsiders: RoleInfo[],
+  selectedMinions: RoleInfo[],
+  selectedDemons: RoleInfo[]) {
+    let check = checkRoles(players.length, selectedTownsfolk.length,
+      selectedOutsiders.length, selectedMinions.length,
+      selectedDemons.length);
+    if (!check) {
+      return;
+    }
+  // assign players to these roles
 }
 
-//TODO: Get selected roles, Assign Roles, Create Game
+//TODO: Assign Roles, Create Game

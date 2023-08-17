@@ -5,3 +5,8 @@ export enum RoleType {
   Demon,
   Traveller
 }
+
+export interface RoleInfo {
+  name: string,
+  description: string
+}

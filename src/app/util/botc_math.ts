@@ -8,7 +8,7 @@
  * Minions: 7-9 Players = 1, 10-12 Players = 2, 13-15 Players = 3,
  * 16-18 Players = 4
  */
-interface ClassLineup{
+export interface ClassLineup {
   numTownsfolk: number,
   numOutsiders: number,
   numMinions: number,

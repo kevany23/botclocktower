@@ -87,7 +87,11 @@ function RoleSelector() {
   };
 
   const handleSubmit = function(evt: BaseSyntheticEvent) {
-    checkRoles(players, selectedTownsfolk, selectedOutsiders, selectedMinions, selectedDemons);
+    const numTownsfolk = getArrayCount(selectedTownsfolk);
+    const numOutsiders = getArrayCount(selectedOutsiders);
+    const numMinions = getArrayCount(selectedMinions);
+    const numDemons = getArrayCount(selectedDemons);
+    checkRoles(players.length, numTownsfolk, numOutsiders, numMinions, numDemons);
     evt.preventDefault();
   };
 
@@ -159,35 +163,61 @@ function RoleSelector() {
 function checkRoles(numPlayers: number, numTownsfolk: number,
   numOutsiders: number, numMinions: number, numDemons: number) {
   // get player count
-  console.log('checkRoles()')
+  console.log('checkRoles()');
+  console.log(numTownsfolk);
+  console.log(numOutsiders);
+  console.log(numMinions);
+  console.log(numDemons);
   if (numPlayers < 7) {
     // Not enough players
-    alert("Not enough players")
-    return
+    alert("Not enough players");
+    return;
   }
   if (numPlayers > 16) {
-    alert("Too many players")
+    alert("Too many players");
+    return;
   }
   const lineup = getClassLineup(numPlayers) as ClassLineup;
-  console.log(lineup)
   // check if number of each category matches
   if (!lineup) {
-    alert("Invalid Number of Players")
+    alert("Invalid Number of Players");
+    return;
   }
-  if (lineup.numOutsiders) {
-
+  if (numTownsfolk < lineup.numTownsfolk) {
+    alert("Not enough Townsfolk selected");
+    return;
+  }
+  if (numOutsiders < lineup.numOutsiders) {
+    alert("Not enough Outsiders selected");
+    return;
+  }
+  if (numMinions < lineup.numMinions) {
+    alert("Not enough Minions selected");
+    return;
+  }
+  if (numDemons < lineup.numDemons) {
+    alert("Not enough Demons selected");
+    return;
   }
 }
 
-function getArrayCounts(array: boolean[]) {
+function getArrayCount(array: boolean[]): number {
   let num = 0;
   for (let item of array) {
     // Avoid runtime error involving truthy values
     if (item === true) {
       num++;
     }
-    return num;
   }
+  return num;
 }
 
-//TODO: check categories
+function assignRoles() {
+  
+}
+
+function createNewGame() {
+
+}
+
+//TODO: Get selected roles, Assign Roles, Create Game

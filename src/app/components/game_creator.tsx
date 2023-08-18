@@ -7,7 +7,7 @@ import { RootState, AppDispatch } from '../store'
 import NameCard from './simple/name_card';
 import { RoleType, RoleInfo } from '../types/index'
 import { ClassLineup, getClassLineup } from '../util/botc_math'
-import { booleanFilter } from '../util/util'
+import { booleanFilter, getRandomIndex } from '../util/util'
 import * as rolesheet from '../../../public/troublebrewing.json'
 import './game_creator.css'
 
@@ -104,7 +104,7 @@ function RoleSelector() {
         townsfolk.map((role, idx) => {
           return (
             <>
-             <input type="checkbox" name="checkbox" checked={selectedTownsfolk[idx]} onChange={() => handleCheckbox(idx, RoleType.Townsfolk)}/>
+              <input type="checkbox" name="checkbox" checked={selectedTownsfolk[idx]} onChange={() => handleCheckbox(idx, RoleType.Townsfolk)} />
               <h5 className="role-title">{role.name}</h5>
               <p>{role.description}</p>
             </>
@@ -117,7 +117,7 @@ function RoleSelector() {
         outsiders.map((role, idx) => {
           return (
             <>
-              <input type="checkbox" name="checkbox" checked={selectedOutsiders[idx]} onChange={() => handleCheckbox(idx, RoleType.Outsider)}/>
+              <input type="checkbox" name="checkbox" checked={selectedOutsiders[idx]} onChange={() => handleCheckbox(idx, RoleType.Outsider)} />
               <h5 className="role-title">{role.name}</h5>
               <p>{role.description}</p>
             </>
@@ -130,7 +130,7 @@ function RoleSelector() {
         minions.map((role, idx) => {
           return (
             <>
-              <input type="checkbox" name="checkbox"checked={selectedMinions[idx]} onChange={() => handleCheckbox(idx, RoleType.Minion)}/>
+              <input type="checkbox" name="checkbox" checked={selectedMinions[idx]} onChange={() => handleCheckbox(idx, RoleType.Minion)} />
               <h5 className="role-title">{role.name}</h5>
               <p>{role.description}</p>
             </>
@@ -163,12 +163,6 @@ function RoleSelector() {
 
 function checkRoles(numPlayers: number, numTownsfolk: number,
   numOutsiders: number, numMinions: number, numDemons: number) {
-  // get player count
-  console.log('checkRoles()');
-  console.log(numTownsfolk);
-  console.log(numOutsiders);
-  console.log(numMinions);
-  console.log(numDemons);
   if (numPlayers < 7) {
     // Not enough players
     alert("Not enough players");
@@ -230,6 +224,30 @@ function createNewGame(players: string[],
       return;
     }
   // assign players to these roles
+  // initialize role assigments
+  const roleAssignments = new Map<string, RoleInfo>();
+  let unassignedPlayers = [...players];
+
+  // get counts of roles to assign
+  const lineup = getClassLineup(players.length) as ClassLineup;
+  
+
+  // iterate through townsfolk, outsiders, chooser random from both lists
+  let unassignedTownsfolk = [...selectedTownsfolk];
+  for (let i = 0; i < lineup.numTownsfolk; i++) {
+    let idx = getRandomIndex(unassignedPlayers);
+    let player = unassignedPlayers[idx];
+    unassignedPlayers.splice(idx, 1);
+    // assign player to random townsfolk role
+    idx = getRandomIndex(unassignedTownsfolk);
+    let role = unassignedTownsfolk[idx];
+    unassignedTownsfolk.splice(idx, 1);
+    roleAssignments.set(player, role);
+  }
+  console.log(unassignedPlayers);
+  console.log(unassignedTownsfolk);
+  console.log(roleAssignments);
+
 }
 
-//TODO: Assign Roles, Create Game
+// TODO: Assign Roles, Create Game

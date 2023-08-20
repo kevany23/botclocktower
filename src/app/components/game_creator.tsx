@@ -230,9 +230,11 @@ function createNewGame(players: string[],
 
   // get counts of roles to assign
   const lineup = getClassLineup(players.length) as ClassLineup;
+  console.log(lineup);
   
 
   // iterate through townsfolk, outsiders, chooser random from both lists
+  // assign townsfolk
   let unassignedTownsfolk = [...selectedTownsfolk];
   for (let i = 0; i < lineup.numTownsfolk; i++) {
     let idx = getRandomIndex(unassignedPlayers);
@@ -244,10 +246,43 @@ function createNewGame(players: string[],
     unassignedTownsfolk.splice(idx, 1);
     roleAssignments.set(player, role);
   }
-  console.log(unassignedPlayers);
-  console.log(unassignedTownsfolk);
+
+  let unassignedOutsiders = [...selectedOutsiders];
+  for (let i = 0; i < lineup.numOutsiders; i++) {
+    let idx = getRandomIndex(unassignedPlayers);
+    let player = unassignedPlayers[idx];
+    unassignedPlayers.splice(idx, 1);
+    // assign player to random townsfolk role
+    idx = getRandomIndex(unassignedOutsiders);
+    let role = unassignedOutsiders[idx];
+    unassignedOutsiders.splice(idx, 1);
+    roleAssignments.set(player, role);
+  }
+  let unassignedMinions = [...selectedMinions];
+  for (let i = 0; i < lineup.numMinions; i++) {
+    let idx = getRandomIndex(unassignedPlayers);
+    let player = unassignedPlayers[idx];
+    unassignedPlayers.splice(idx, 1);
+    // assign player to random townsfolk role
+    idx = getRandomIndex(unassignedMinions);
+    let role = unassignedMinions[idx];
+    unassignedMinions.splice(idx, 1);
+    roleAssignments.set(player, role);
+  }
+  let unassignedDemons = [...selectedDemons];
+  for (let i = 0; i < lineup.numDemons; i++) {
+    let idx = getRandomIndex(unassignedPlayers);
+    let player = unassignedPlayers[idx];
+    unassignedPlayers.splice(idx, 1);
+    // assign player to random townsfolk role
+    idx = getRandomIndex(unassignedDemons);
+    let role = unassignedDemons[idx];
+    unassignedDemons.splice(idx, 1);
+    roleAssignments.set(player, role);
+  }
   console.log(roleAssignments);
+
 
 }
 
-// TODO: Assign Roles, Create Game
+// TODO: Make redux call to start the game

@@ -9,19 +9,16 @@ export function booleanFilter(array: any, filters: boolean[]) {
 }
 
 export function getRandomIndex(array: any[]) {
-  const n = array.length - 1;
-  const idx = Math.floor(Math.random() * (n - 1));
+  const idx = Math.floor(Math.random() * array.length);
   return idx;
 }
 
 export function getRandomElement(array: any[]) {
-  const n = array.length - 1;
-  const idx = Math.floor(Math.random() * (n - 1));
+  const idx = Math.floor(Math.random() * array.length);
   return array[idx];
 }
 
 export function extractRandomElement(array: any[]) {
-  const n = array.length - 1;
-  const idx = Math.floor(Math.random() * (n - 1));
+  const idx = Math.floor(Math.random() * array.length);
   return array.splice(idx);
 }

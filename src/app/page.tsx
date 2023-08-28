@@ -9,12 +9,13 @@ import { ReduxProvider } from './provider'
 import { RootState, AppDispatch } from './store'
 import GameCreator from './components/game_creator'
 import { Container, Row, Col } from 'react-bootstrap';
+import { GamePhase } from './types/game_state'
 
 export default function Home() {
   const dispatch = useDispatch();
-  const isGameRunning = useSelector((state: RootState) => state.gameState.isGameRunning);
+  const phase = useSelector((state: RootState) => state.gamePhase.phase);
   let screen = <p>Default Screen</p>;
-  if (!isGameRunning) {
+  if (phase == GamePhase.GAME_CREATOR) {
     screen = <GameCreator/>
   }
   return (

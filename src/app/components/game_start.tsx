@@ -6,4 +6,5 @@ import { RootState, AppDispatch } from '../store'
 
 export default function GameStart() {
   const dispatch = useDispatch();
+  return <></>;
 }

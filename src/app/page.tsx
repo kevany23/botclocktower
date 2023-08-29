@@ -8,6 +8,7 @@ import { addPlayer } from './redux/gamecreatorslice'
 import { ReduxProvider } from './provider'
 import { RootState, AppDispatch } from './store'
 import GameCreator from './components/game_creator'
+import GameStart from './components/game_start'
 import { Container, Row, Col } from 'react-bootstrap';
 import { GamePhase } from './types/game_state'
 
@@ -17,6 +18,9 @@ export default function Home() {
   let screen = <p>Default Screen</p>;
   if (phase == GamePhase.GAME_CREATOR) {
     screen = <GameCreator/>
+  }
+  else if (phase == GamePhase.GAME_START) {
+    screen = <GameStart/>
   }
   return (
       <main className={styles.main}>

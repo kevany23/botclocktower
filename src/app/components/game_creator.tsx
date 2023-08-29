@@ -3,9 +3,11 @@ import React, { Component, BaseSyntheticEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { addPlayer, changePage, GameCreatorPage } from '../redux/gamecreatorslice';
+import { setPhase } from '../redux/gamephaseslice';
 import { RootState, AppDispatch } from '../store'
 import NameCard from './simple/name_card';
-import { RoleType, RoleInfo } from '../types/index'
+import { RoleType, RoleInfo } from '../types/index';
+import { GamePhase } from '../types/game_state';
 import { ClassLineup, getClassLineup } from '../util/botc_math'
 import { booleanFilter, getRandomIndex } from '../util/util'
 import * as rolesheet from '../../../public/troublebrewing.json'
@@ -93,6 +95,7 @@ function RoleSelector() {
     const usableMinions = booleanFilter(minions, selectedMinions);
     const usableDemons = booleanFilter(demons, selectedDemons);
     createNewGame(players, usableTownsfolk, usableOutsiders, usableMinions, usableDemons);
+    dispatch(setPhase(GamePhase.GAME_START));
     evt.preventDefault();
   };
 
@@ -281,8 +284,6 @@ function createNewGame(players: string[],
     roleAssignments.set(player, role);
   }
   console.log(roleAssignments);
-
-
 }
 
 // TODO: Make redux call to start the game

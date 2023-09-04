@@ -6,7 +6,8 @@ import { addPlayer, changePage, GameCreatorPage } from '../redux/gamecreatorslic
 import { setPhase } from '../redux/gamephaseslice';
 import { RootState, AppDispatch } from '../store'
 import NameCard from './simple/name_card';
-import { RoleType, RoleInfo } from '../types/index';
+import { RoleInfo } from '../types/index';
+import { RoleType } from '../types/roles/role';
 import { GamePhase } from '../types/game_state';
 import { ClassLineup, getClassLineup } from '../util/botc_math'
 import { booleanFilter, getRandomIndex } from '../util/util'

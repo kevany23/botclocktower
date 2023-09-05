@@ -1,4 +1,4 @@
-import { Role, RoleType } from './role';
+import { Role, RoleType, AbilityType } from './role';
 
 /**
  * Role is the "name" of the character type.
@@ -7,11 +7,10 @@ import { Role, RoleType } from './role';
  */
 
 export abstract class Character {
-  role: Role;
-  roletype: RoleType;
-  constructor(role: Role, roletype: RoleType) {
-    this.role = role; 
-    this.roletype = roletype;
+  role: Role = Role.None;
+  roleType: RoleType = RoleType.None;
+  abilityType: AbilityType = AbilityType.None;
+  constructor() {
   }
   getDescription() {
 
@@ -22,31 +21,41 @@ export abstract class Character {
 }
 
 export abstract class Townsfolk extends Character {
-  constructor(role: Role) {
-    super(role, RoleType.Townsfolk);
+  roleType: RoleType = RoleType.Townsfolk;
+  constructor() {
+    super();
   }
 }
 
 export abstract class Outsider extends Character {
-  constructor(role: Role) {
-    super(role, RoleType.Outsider);
+  roleType: RoleType = RoleType.Outsider;
+  constructor() {
+    super();
   }
 }
 
 export abstract class Minion extends Character {
-  constructor(role: Role) {
-    super(role, RoleType.Minion);
+  roleType: RoleType = RoleType.Minion;
+  constructor() {
+    super();
   }
 }
 
 export abstract class Demon extends Character {
-  constructor(role: Role) {
-    super(role, RoleType.Demon);
+  roleType: RoleType = RoleType.Demon;
+  constructor() {
+    super();
   }
 }
 
 export class Washerwoman extends Townsfolk {
+  abilityType: AbilityType = AbilityType.Start;
   constructor() {
-    super(Role.Washerwoman);
+    super();
+  }
+  useAbility() {
+    
   }
 }
+
+// TODO: make call to get and change game information

@@ -20,7 +20,8 @@ export enum Role {
   Spy,
   Baron,
   Scarletwoman,
-  Imp
+  Imp,
+  None
 }
 
 export enum RoleType {
@@ -28,7 +29,8 @@ export enum RoleType {
   Outsider,
   Minion,
   Demon,
-  Traveller
+  Traveller,
+  None
 }
 
 export enum AbilityType {
@@ -36,5 +38,6 @@ export enum AbilityType {
   Start,
   Nightly2,
   OnceDay,
-  Other
+  Other,
+  None
 }

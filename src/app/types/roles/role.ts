@@ -33,11 +33,18 @@ export enum RoleType {
   None
 }
 
+/**
+ * If Role has multiple ability types,
+ * it will have another field to list them all
+ */
 export enum AbilityType {
   Nightly,
-  Start,
+  Night1,
   Nightly2,
-  OnceDay,
+  OneTimeDay,
   Other,
+  Persistent,
+  Multiple,
+  Triggered,
   None
 }

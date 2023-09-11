@@ -49,7 +49,7 @@ export abstract class Demon extends Character {
 }
 
 export class Washerwoman extends Townsfolk {
-  abilityType: AbilityType = AbilityType.Start;
+  abilityType: AbilityType = AbilityType.Night1;
   constructor() {
     super();
   }
@@ -59,3 +59,4 @@ export class Washerwoman extends Townsfolk {
 }
 
 // TODO: make call to get and change game information
+// Create Player state

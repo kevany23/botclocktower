@@ -8,6 +8,7 @@ import { RootState, AppDispatch } from '../store'
 import NameCard from './simple/name_card';
 import { RoleInfo } from '../types/index';
 import { RoleType } from '../types/roles/role';
+import { Character } from '../types/roles/character';
 import { GamePhase } from '../types/game_state';
 import { ClassLineup, getClassLineup } from '../util/botc_math'
 import { booleanFilter, getRandomIndex } from '../util/util'
@@ -95,7 +96,7 @@ function RoleSelector() {
     const usableOutsiders = booleanFilter(outsiders, selectedOutsiders);
     const usableMinions = booleanFilter(minions, selectedMinions);
     const usableDemons = booleanFilter(demons, selectedDemons);
-    createNewGame(players, usableTownsfolk, usableOutsiders, usableMinions, usableDemons);
+    const roleAssignments = assignRoles(players, usableTownsfolk, usableOutsiders, usableMinions, usableDemons);
     dispatch(setPhase(GamePhase.GAME_START));
     evt.preventDefault();
   };
@@ -201,22 +202,11 @@ function checkRoles(numPlayers: number, numTownsfolk: number,
   return true;
 }
 
-function getArrayCount(array: boolean[]): number {
-  let num = 0;
-  for (let item of array) {
-    // Avoid runtime error involving truthy values
-    if (item === true) {
-      num++;
-    }
-  }
-  return num;
-}
-
-function assignRoles() {
-  // first we get the individual roles from the state
-}
-
-function createNewGame(players: string[],
+/**
+ * Given the players and the selected roles, assign roles based on
+ * the player count.
+ */
+function assignRoles(players: string[],
   selectedTownsfolk: RoleInfo[],
   selectedOutsiders: RoleInfo[],
   selectedMinions: RoleInfo[],
@@ -229,7 +219,7 @@ function createNewGame(players: string[],
     }
   // assign players to these roles
   // initialize role assigments
-  const roleAssignments = new Map<string, RoleInfo>();
+  const roleAssignments = [];
   let unassignedPlayers = [...players];
 
   // get counts of roles to assign
@@ -248,7 +238,10 @@ function createNewGame(players: string[],
     idx = getRandomIndex(unassignedTownsfolk);
     let role = unassignedTownsfolk[idx];
     unassignedTownsfolk.splice(idx, 1);
-    roleAssignments.set(player, role);
+    roleAssignments.push({
+      name: player,
+      role: role.name
+    });
   }
 
   let unassignedOutsiders = [...selectedOutsiders];
@@ -260,7 +253,10 @@ function createNewGame(players: string[],
     idx = getRandomIndex(unassignedOutsiders);
     let role = unassignedOutsiders[idx];
     unassignedOutsiders.splice(idx, 1);
-    roleAssignments.set(player, role);
+    roleAssignments.push({
+      name: player,
+      role: role.name
+    });
   }
   let unassignedMinions = [...selectedMinions];
   for (let i = 0; i < lineup.numMinions; i++) {
@@ -271,7 +267,10 @@ function createNewGame(players: string[],
     idx = getRandomIndex(unassignedMinions);
     let role = unassignedMinions[idx];
     unassignedMinions.splice(idx, 1);
-    roleAssignments.set(player, role);
+    roleAssignments.push({
+      name: player,
+      role: role.name
+    });
   }
   let unassignedDemons = [...selectedDemons];
   for (let i = 0; i < lineup.numDemons; i++) {
@@ -282,9 +281,19 @@ function createNewGame(players: string[],
     idx = getRandomIndex(unassignedDemons);
     let role = unassignedDemons[idx];
     unassignedDemons.splice(idx, 1);
-    roleAssignments.set(player, role);
+    roleAssignments.push({
+      name: player,
+      role: role.name
+    });
   }
   console.log(roleAssignments);
+  return roleAssignments;
+}
+
+function initializePlayers() {
+
 }
 
 // TODO: Make redux call to start the game
+// Add players to redux state
+// Implement Baron effect

@@ -1,27 +1,27 @@
 export enum Role {
-  Washerwoman,
-  Librarian,
-  Investigator,
-  Chef,
-  Empath,
-  Fortuneteller,
-  Undertaker,
-  Monk,
-  Slayer,
-  Soldier,
-  RavenKeeper,
-  Virgin,
-  Mayor,
-  Butler,
-  Saint,
-  Recluse,
-  Drunk,
-  Poisoner,
-  Spy,
-  Baron,
-  Scarletwoman,
-  Imp,
-  None
+  Washerwoman = "Washerwoman",
+  Librarian = "Librarian",
+  Investigator = "Investigator",
+  Chef = "Chef",
+  Empath = "Empath",
+  Fortuneteller = "Fortuneteller",
+  Undertaker = "Undertaker",
+  Monk = "Monk",
+  Slayer = "Slayer",
+  Soldier = "Soldier",
+  Ravenkeeper = "Ravenkeeper",
+  Virgin = "Virgin",
+  Mayor = "Mayor",
+  Butler = "Butler",
+  Saint = "Saint",
+  Recluse = "Recluse",
+  Drunk = "Drunk",
+  Poisoner = "Poisoner",
+  Spy = "Spy",
+  Baron = "Baron",
+  Scarletwoman = "Scarletwoman",
+  Imp = "Imp",
+  None = "None"
 }
 
 export enum RoleType {
@@ -38,6 +38,7 @@ export enum RoleType {
  * it will have another field to list them all
  */
 export enum AbilityType {
+  GameStart,
   Nightly,
   Night1,
   Nightly2,

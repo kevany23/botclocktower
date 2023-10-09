@@ -6,11 +6,13 @@ export interface PlayerInterface {
   role: Role,
   character: Character,
   isAlive: boolean,
-  hasGhostVote: boolean
+  isPoisoned: boolean,
+  hasGhostVote: boolean,
 }
 
 export class Player implements PlayerInterface {
   isAlive = true;
+  isPoisoned = false;
   hasGhostVote = true;
   name: string;
   role: Role;
